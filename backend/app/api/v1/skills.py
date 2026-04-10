@@ -156,7 +156,7 @@ async def create_skill(
         action="publish",
         resource_type="skill",
         resource_id=f"{namespace_slug}:{slug}",
-        metadata={"version": version},
+        extra_data={"version": version},
     )
     db.add(audit)
 
@@ -270,7 +270,7 @@ async def create_skill_version(
         action="publish",
         resource_type="skill_version",
         resource_id=f"{namespace}:{slug}",
-        metadata={"version": data.version},
+        extra_data={"version": data.version},
     )
     db.add(audit)
 
@@ -407,7 +407,7 @@ async def rate_skill(
         action="rate",
         resource_type="skill",
         resource_id=f"{namespace}:{slug}",
-        metadata={"rating": data.rating},
+        extra_data={"rating": data.rating},
     )
     db.add(audit)
 

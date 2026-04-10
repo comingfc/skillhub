@@ -101,7 +101,7 @@ async def create_namespace(
         action="create",
         resource_type="namespace",
         resource_id=data.slug,
-        metadata={"name": data.name},
+        extra_data={"name": data.name},
     )
     db.add(audit)
 
@@ -302,7 +302,7 @@ async def add_member(
         action="invite",
         resource_type="namespace_member",
         resource_id=str(namespace.id),
-        metadata={"added_user_id": user_id, "role": role},
+        extra_data={"added_user_id": user_id, "role": role},
     )
     db.add(audit)
 
@@ -355,7 +355,7 @@ async def update_member(
         action="change_role",
         resource_type="namespace_member",
         resource_id=str(namespace.id),
-        metadata={"affected_user_id": member_user_id, "new_role": data.role},
+        extra_data={"affected_user_id": member_user_id, "new_role": data.role},
     )
     db.add(audit)
 
@@ -407,7 +407,7 @@ async def remove_member(
         action="remove_member",
         resource_type="namespace_member",
         resource_id=str(namespace.id),
-        metadata={"removed_user_id": member_user_id},
+        extra_data={"removed_user_id": member_user_id},
     )
     db.add(audit)
 
